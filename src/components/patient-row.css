@@ -1,0 +1,64 @@
+
+.patient-row {
+  background: #fff;
+  border-bottom: 1px solid #ededed;
+  padding: 1em;
+}
+
+.patient-row .name div:first-child {
+  font-weight: bold;
+}
+
+.patient-row .name div:last-child {
+  color: #888;
+}
+
+.patient-row .email-phone-zip {
+  color: #888;
+  text-align: center;
+}
+
+.patient-row .gender-age {
+  text-align: right;
+}
+
+@media (max-width: 576px) {
+  .patient-row .createdAt,
+  .patient-row .name,
+  .patient-row .email-phone-zip,
+  .patient-row .gender-age {
+    text-align: center;
+  }
+
+  .patient-row .gender-age {
+    margin-top: 2em;
+  }
+
+  .patient-row .createdAt,
+  .patient-row .email-phone-zip {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .patient-row .createdAt,
+  .patient-row .name,
+  .patient-row .email-phone-zip,
+  .patient-row .gender-age {
+    text-align: center;
+  }
+
+  .patient-row .email-phone-zip,
+  .patient-row .gender-age {
+    margin-top: 2em;
+  }
+}
+
+@media (min-width: 768px) {
+  .patient-row .createdAt,
+  .patient-row .name,
+  .patient-row .email-phone-zip,
+  .patient-row .gender-age {
+    margin-top: 0;
+  }
+}
