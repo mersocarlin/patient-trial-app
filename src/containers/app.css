@@ -1,0 +1,31 @@
+body {
+  padding-top: 58px;
+  background-color: #e3e8ea !important;
+}
+
+.patient-trial-app .navbar {
+  background-color: #19934C;
+  border-bottom: 4px solid #0e522a;
+}
+
+.patient-trial-app .navbar .navbar-brand {
+  color: #fff !important;
+}
+
+.patient-trial-app .navbar .navbar-brand:hover {
+  color: #fff;
+}
+
+.patient-trial-app .btn.btn-primary {
+  background-color: #19934C;
+  border-color: #19934C;
+}
+
+.patient-trial-app .btn.btn-primary:hover {
+  background-color: #0e522a;
+  border-color: #0e522a;
+}
+
+.patient-trial-app .form-control:focus {
+  border-color: #19934C;
+}
