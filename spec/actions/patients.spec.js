@@ -8,6 +8,10 @@ import {
   FETCH_PATIENTS_SUCCESS,
   FETCH_PATIENTS_FAILURE,
   INVALIDATE_PATIENTS_LIST,
+  SAVE_PATIENT_REQUEST,
+  SAVE_PATIENT_SUCCESS,
+  SAVE_PATIENT_FAILURE,
+  SAVE_PATIENT_RESET,
 } from '../../src/actions/patients';
 
 const middlewares = [ thunk ];
@@ -124,5 +128,137 @@ describe('patient-actions', () => {
           .map(action => action.type);
         expect(actions).to.have.members(expectedActions);
       });
+  });
+
+  it('should dispatch SAVE_PATIENT_FAILURE when invalid patient', () => {
+    const expectedActions = [ SAVE_PATIENT_REQUEST, SAVE_PATIENT_FAILURE ];
+    const store = mockStore({});
+    const payload = {
+      gender: 'male',
+      firstname: '',
+      lastname: 'last1',
+      email: 'first1@last1.com',
+      phone: '0123456',
+      age: 21,
+      zip: '12346',
+      termsAccepted: true,
+    };
+
+    return store
+      .dispatch(patientActions.savePatient(payload))
+      .then(() => {
+        const actions = store
+          .getActions()
+          .map(action => action.type);
+        expect(actions).to.have.members(expectedActions);
+      });
+  });
+
+  it('should dispatch SAVE_PATIENT_FAILURE when there is any error coming from backend', () => {
+    fetchMock.post('/api/v1/patients', {
+      number: 400,
+      body: {
+        error_name: 'BadRequestError',
+        error_message: 'Error from backend.',
+        status_code: 400,
+      },
+    });
+
+    const expectedActions = [ SAVE_PATIENT_REQUEST, SAVE_PATIENT_FAILURE ];
+    const store = mockStore({});
+    const payload = {
+      gender: 'male',
+      firstname: 'first1',
+      lastname: 'last1',
+      email: 'first1@last1.com',
+      phone: '0123456',
+      age: 21,
+      zip: '12346',
+      termsAccepted: true,
+    };
+
+    return store
+      .dispatch(patientActions.savePatient(payload))
+      .then(() => {
+        fetchMock.restore();
+        const actions = store
+          .getActions()
+          .map(action => action.type);
+        expect(actions).to.have.members(expectedActions);
+      });
+  });
+
+  it('should dispatch SAVE_PATIENT_FAILURE when backend is not responding', () => {
+    const expectedActions = [ SAVE_PATIENT_REQUEST, SAVE_PATIENT_FAILURE ];
+    const store = mockStore({});
+    const payload = {
+      gender: 'male',
+      firstname: 'first1',
+      lastname: 'last1',
+      email: 'first1@last1.com',
+      phone: '0123456',
+      age: 21,
+      zip: '12346',
+      termsAccepted: true,
+    };
+
+    return store
+      .dispatch(patientActions.savePatient(payload))
+      .then(() => {
+        const actions = store
+          .getActions()
+          .map(action => action.type);
+        expect(actions).to.have.members(expectedActions);
+      });
+  });
+
+  it('should dispatch SAVE_PATIENT_SUCCESS when creating user', () => {
+    fetchMock.post('/api/v1/patients', {
+      number: 201,
+      body: {
+        id: '1',
+        createdAt: '2016-01-01',
+        updatedAt: '2016-01-01',
+        gender: 'male',
+        firstname: 'first1',
+        lastname: 'last1',
+        email: 'first1@last1.com',
+        phone: '0123456',
+        age: 21,
+        zip: '12346',
+        termsAccepted: true,
+      },
+    });
+
+    const expectedActions = [ SAVE_PATIENT_REQUEST, SAVE_PATIENT_SUCCESS ];
+    const store = mockStore({});
+    const payload = {
+      gender: 'male',
+      firstname: 'first1',
+      lastname: 'last1',
+      email: 'first1@last1.com',
+      phone: '0123456',
+      age: 21,
+      zip: '12346',
+      termsAccepted: true,
+    };
+
+    return store
+      .dispatch(patientActions.savePatient(payload))
+      .then(() => {
+        fetchMock.restore();
+        const actions = store
+          .getActions()
+          .map(action => action.type);
+        expect(actions).to.have.members(expectedActions);
+      });
+  });
+
+  it('should dispatch SAVE_PATIENT_RESET', () => {
+    const expectedActions = { type: SAVE_PATIENT_RESET };
+    const store = mockStore({});
+
+    const actions = store.dispatch(patientActions.resetSavePatient());
+    expect(actions).to.deep.equal(expectedActions);
   });
 });
