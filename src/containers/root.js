@@ -2,14 +2,17 @@ import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
 
+import IntlProvider from './intl-provider';
 import routes from '../routes';
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <Router
-      history={hashHistory}
-      children={routes}
-    />
+    <IntlProvider>
+      <Router
+        history={hashHistory}
+        children={routes}
+      />
+    </IntlProvider>
   </Provider>
 );
 
