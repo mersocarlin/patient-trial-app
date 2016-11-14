@@ -1,0 +1,15 @@
+
+.patient-form .form-control.input-uppercase {
+  text-transform: uppercase;
+}
+
+.patient-form .form-control.input-uppercase::-webkit-input-placeholder {
+  text-transform: none;
+}
+.patient-form .form-control.input-uppercase::-moz-placeholder {
+  text-transform: none;
+}
+
+.patient-form .actions .btn i {
+  margin-right: 0.5em;
+}
