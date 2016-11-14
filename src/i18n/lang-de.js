@@ -1,6 +1,8 @@
 export default {
   'application.name': 'Patient Trial App',
 
+  'home.header': '',
+  'topmenu.patient-list': '',
   'topmenu.create-patient': '',
 
   'patient.form.save': '',
