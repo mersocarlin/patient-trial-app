@@ -1,6 +1,8 @@
 export default {
   'application.name': 'Patient Trial App',
 
+  'topmenu.create-patient': '',
+
   'patient.form.save': '',
   'patient.form.cancel': '',
   'patient.form.requiredFields': '',

@@ -1,0 +1,14 @@
+
+.patient-list-page .menu-bar {
+  background-color: #0e522a;
+  margin-bottom: 1em;
+  padding: 4em;
+}
+
+.patient-list-page .menu-bar .btn {
+  border-radius: 30px;
+}
+
+.patient-list-page .menu-bar .btn i {
+  margin-right: 0.5em;
+}
