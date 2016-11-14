@@ -1,3 +1,19 @@
 export default {
   'application.name': 'Patient Trial App',
+
+  'patient.form.save': '',
+  'patient.form.cancel': '',
+  'patient.form.requiredFields': '',
+
+  'patient.properties.gender': '',
+  'patient.properties.firstname': '',
+  'patient.properties.lastname': '',
+  'patient.properties.email': '',
+  'patient.properties.phone': '',
+  'patient.properties.age': '',
+  'patient.properties.zip': '',
+  'patient.properties.acceptTerms': '',
+
+  'patient.genders.female': '',
+  'patient.genders.male': '',
 };
